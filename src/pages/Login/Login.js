@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { Redirect, NavLink } from "react-router-dom";
 
 //Context Import
@@ -8,12 +8,17 @@ import { useAuth } from "../../context/auth";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import Input from "./Input/Input";
 import Button from "./Button/Button";
+import Loading from "../../components/Loading/Loading";
+
+//Firebase Import
+import firebaseApp from "../../utils/firebase";
 
 //SCSS Import
 import "./Login.scss";
 
 const Login = () => {
   //TO:DO - Single Json object with one use state for updates
+  const [loading, setLoading] = useState(false);
   const [loginError, setLoginError] = useState(false);
   const [signup, setSignup] = useState(false);
   const [userName, setUserName] = useState("");
@@ -22,7 +27,7 @@ const Login = () => {
   const [isLoggedIn, setLoggedIn] = useState(
     authTokens === null ? false : true
   );
-  const userPassword = "123456";
+  const userPassword = "123dsfsdf456";
   const userEmail = "test";
 
   //Redirect to Trade History if user is already logged in
@@ -38,25 +43,29 @@ const Login = () => {
     e.preventDefault();
     try {
       //axious post request or call to database to check user details
-      if (userPassword === password && userEmail === userName) {
-        setAuthTokens(
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWYwMjFiMDdkOGIwMDI0ZTNjMzY1OTUxIn0sImlhdCI6MTU5NDAxNjk4OSwiZXhwIjoxNTk0Mzc2OTg5fQ.nuKTpGnimoSDvgTettcd23OwdrnnoLlk_m6OYdMAp3U"
-        );
-        setLoggedIn(true);
-      } else {
-        setLoginError(true);
-        setTimeout(() => {
-          setLoginError(false);
-        }, 3500);
-      }
+      setLoading(true);
+      const object = await firebaseApp
+        .auth()
+        .signInWithEmailAndPassword(userName, password);
+
+      setAuthTokens(
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWYwMjFiMDdkOGIwMDI0ZTNjMzY1OTUxIn0sImlhdCI6MTU5NDAxNjk4OSwiZXhwIjoxNTk0Mzc2OTg5fQ.nuKTpGnimoSDvgTettcd23OwdrnnoLlk_m6OYdMAp3U"
+      );
+      setLoggedIn(true);
     } catch (error) {
       console.log(error);
+      setLoading(false);
+      setLoginError(true);
+      setTimeout(() => {
+        setLoginError(false);
+      }, 5000);
     }
   };
   /*change 'username' back to 'email' after debugging*/
 
   return (
     <div className="login-page">
+      {loading ? <Loading /> : <Fragment />}
       <div className="bg-image"></div>
       <div className="login-content">
         <PageTitle
@@ -66,7 +75,7 @@ const Login = () => {
         />
         <form onSubmit={(e) => onSubmit(e)}>
           <Input
-            type="username"
+            type="email"
             value={userName}
             onChange={(e) => {
               setUserName(e.target.value);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 
 //Component Import
@@ -6,13 +6,21 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 import Input from "../Login/Input/Input";
 import Button from "../Login/Button/Button";
 
+//Auth Context Import
+import { useAuth } from "../../context/auth";
+import Loading from "../../components/Loading/Loading";
+
 //SCSS Import
 import "./Signup.scss";
+
+//Firebase Import
+import firebaseApp from "../../utils/firebase";
 
 //Util Import
 import zxcvbn from "zxcvbn";
 
 const Signup = () => {
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -21,6 +29,10 @@ const Signup = () => {
   const [passStrength, setPassStrength] = useState("");
   const [passMatch, setPassMatch] = useState("");
   const [cantSubmit, setCantSubmit] = useState(true);
+  const { authTokens, setAuthTokens } = useAuth();
+  const [isLoggedIn, setLoggedIn] = useState(
+    authTokens === null ? false : true
+  );
 
   useEffect(() => {
     if (password) {
@@ -49,6 +61,11 @@ const Signup = () => {
     return <Redirect to="/" />;
   }
 
+  //Redirect to Trade History if Signs Up
+  if (isLoggedIn) {
+    return <Redirect to="/history" />;
+  }
+
   const registerUser = () => {
     console.log("Registering User");
   };
@@ -56,12 +73,15 @@ const Signup = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(email);
-      console.log(name);
-      console.log(password);
-      console.log(confirmPassword);
+      setLoading(true);
+      await firebaseApp.auth().createUserWithEmailAndPassword(email, password);
+      setAuthTokens(
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWYwMjFiMDdkOGIwMDI0ZTNjMzY1OTUxIn0sImlhdCI6MTU5NDAxNjk4OSwiZXhwIjoxNTk0Mzc2OTg5fQ.nuKTpGnimoSDvgTettcd23OwdrnnoLlk_m6OYdMAp3U"
+      );
+      setLoggedIn(true);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -89,6 +109,7 @@ const Signup = () => {
 
   return (
     <div className="login-page">
+      {loading ? <Loading /> : <Fragment />}
       <div className="bg-image"></div>
       <div className="login-content">
         <PageTitle
