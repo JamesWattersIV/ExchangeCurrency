@@ -1,0 +1,11 @@
+@import "../../../sass/main.scss";
+
+.heading-holder {
+  display: flex;
+  flex-direction: row;
+
+  .h1-pink {
+    color: $mainPink;
+    font-weight: 600;
+  }
+}

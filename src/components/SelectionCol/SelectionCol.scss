@@ -1,0 +1,43 @@
+@import "../../sass/main.scss";
+
+.selection-col {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  align-content: center;
+  padding-right: 5rem;
+
+  h3 {
+    color: $mainPurple;
+    font-size: 24px;
+    font-weight: 500;
+    align-self: baseline;
+    padding: 0.25rem 0rem;
+  }
+
+  input {
+    height: 20px;
+    padding: 0.5rem;
+    border: 1px solid $lightGrey;
+    width: 12em;
+    font-size: 18px;
+    font-family: $Quicksand;
+    font-weight: 500;
+  }
+  input:focus {
+    outline: none;
+  }
+
+  select {
+    font-size: 18px;
+    font-family: $Quicksand;
+    font-weight: 500;
+    height: 40px;
+    padding: 0.25em;
+    margin-bottom: 2rem;
+    border: 1px solid $lightGrey;
+  }
+  select:focus {
+    outline: none;
+  }
+}

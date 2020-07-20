@@ -1,0 +1,43 @@
+@import "../../sass/main.scss";
+
+.login-page {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100vh;
+
+  .bg-image {
+    height: 100%;
+    width: 35vw;
+    //background-image: url("https://images.unsplash.com/photo-1581922819941-6ab31ab79afc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80");
+    background-image: url("https://cloudfront.sketchanet.com/u/398636/images/1366/1500995263istockxxxlarge.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 50px;
+  }
+
+  .login-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  form {
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .btn-row {
+      padding-top: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .login-content {
+    width: 40%;
+  }
+}

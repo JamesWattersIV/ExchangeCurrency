@@ -1,0 +1,35 @@
+@import "../../sass/main.scss";
+
+.new-trade-container {
+  padding-top: 10rem;
+  padding-left: 25rem;
+
+  .trade-info {
+    //background-color: lightblue;
+    padding-top: 4rem;
+
+    h2 {
+      font-size: 28px;
+      font-weight: 400;
+      color: black;
+    }
+
+    .hr {
+      margin-top: 10px;
+      width: 70%;
+      height: 2px;
+      background-color: $lightGrey;
+      margin-right: 20rem;
+    }
+
+    .btn {
+      width: 20%;
+    }
+  }
+}
+
+.selection-holder {
+  display: flex;
+  flex: row;
+  padding-bottom: 4rem;
+}

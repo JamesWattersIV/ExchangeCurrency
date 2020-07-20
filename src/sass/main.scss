@@ -1,0 +1,44 @@
+$mainPink: #e73985;
+$mainPurple: #622c8e;
+$mainGradient: linear-gradient(
+  180deg,
+  rgba(98, 44, 142, 1) 15%,
+  rgba(231, 57, 133, 1) 100%
+);
+$softGrey: #a1a2a6;
+$lightGrey: #cbcbcb;
+$darkGrey: #757775;
+$Quicksand: "Quicksand", sans-serif;
+$tablePadding: 0.5rem;
+
+body {
+  font-family: $Quicksand;
+
+  h1 {
+    font-size: 48px;
+    font-weight: 400;
+    color: black;
+    padding-right: 0.2em;
+    margin: 0;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 24px;
+    color: $softGrey;
+    font-weight: 300;
+  }
+
+  h3 {
+    margin: 0.2rem;
+    font-size: 16px;
+    font-weight: 400;
+    color: $softGrey;
+    align-self: flex-end;
+    transition: all 0.5s ease;
+  }
+
+  h4 {
+    margin: 0;
+  }
+}

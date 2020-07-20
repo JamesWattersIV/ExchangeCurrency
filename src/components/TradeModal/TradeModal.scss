@@ -1,0 +1,26 @@
+@import "../../sass/main.scss";
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-bg {
+  background-color: white;
+  padding: 1rem;
+  outline: none;
+  width: 40%;
+
+  h2 {
+    color: $mainPink;
+    font-weight: 500;
+  }
+
+  .button-row {
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}

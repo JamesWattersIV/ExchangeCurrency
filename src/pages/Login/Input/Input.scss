@@ -1,0 +1,29 @@
+@import "../../../sass/main.scss";
+
+.input-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border: 1px solid $lightGrey;
+
+  i {
+    font-size: 30px;
+    margin-left: 10px;
+    padding: 0.5rem;
+    color: $lightGrey;
+  }
+
+  input {
+    height: 50px;
+    width: 15rem;
+    font-size: 20px;
+    font-weight: 300;
+    color: $darkGrey;
+    border: none;
+    padding: 0.5rem;
+  }
+
+  input:focus {
+    outline: none;
+  }
+}

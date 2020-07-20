@@ -1,0 +1,31 @@
+@import "../../sass/main.scss";
+
+.navbar-holder {
+  background-color: $mainPink;
+  display: flex;
+  flex-direction: row;
+  min-height: 7vh;
+  width: 100vw;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    width: 100%;
+
+    li {
+      list-style: none;
+
+      .nav-link {
+        text-decoration: none;
+        color: white;
+        font-size: 24px;
+        letter-spacing: 3px;
+        font-weight: 400;
+        font-family: $Quicksand;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
