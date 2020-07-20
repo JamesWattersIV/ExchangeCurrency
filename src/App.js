@@ -4,6 +4,7 @@ import PrivateRoute from "./routing/PrivateRoute";
 
 //Page Imports
 import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
 import NewTrade from "./pages/NewTrade/NewTrade";
 import TradeHistiry from "./pages/TradeHistory/TradeHistory";
 
@@ -33,6 +34,7 @@ function App() {
       <Router>
         <Fragment>
           <Route exact path="/" component={Login} />
+          <Route exact path="/signup" component={Signup} />
           {authTokens && authTokens != null ? <NavBar /> : <></>}
           <TradeHistoryProvider>
             <PrivateRoute exact path="/history" component={TradeHistiry} />

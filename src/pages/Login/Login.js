@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 
 //Context Import
 import { useAuth } from "../../context/auth";
@@ -15,6 +15,7 @@ import "./Login.scss";
 const Login = () => {
   //TO:DO - Single Json object with one use state for updates
   const [loginError, setLoginError] = useState(false);
+  const [signup, setSignup] = useState(false);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const { authTokens, setAuthTokens } = useAuth();
@@ -27,6 +28,10 @@ const Login = () => {
   //Redirect to Trade History if user is already logged in
   if (isLoggedIn) {
     return <Redirect to="/history" />;
+  }
+
+  if (signup) {
+    return <Redirect to="/signup" />;
   }
 
   const onSubmit = async (e) => {
@@ -56,7 +61,7 @@ const Login = () => {
       <div className="login-content">
         <PageTitle
           headingOne="Welcome to"
-          headingTwo="Mercury FX"
+          headingTwo="Exchange FX"
           subHeading="Buy and Sell Forex Easily, Safely, Online"
         />
         <form onSubmit={(e) => onSubmit(e)}>
@@ -86,7 +91,13 @@ const Login = () => {
           </div>
           <div className="btn-row">
             <Button type="submit" className="btn" value="Login" />
-            <Button type="button" className="btn alt" value="Signup" />
+            <Button
+              type="button"
+              className="btn alt"
+              value="Signup"
+              onClick={() => setSignup(true)}
+              disabled={false}
+            />
           </div>
         </form>
       </div>

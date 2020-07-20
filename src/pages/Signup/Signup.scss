@@ -1,0 +1,48 @@
+@import "../../sass/main.scss";
+.signup-spacer {
+  width: 100%;
+  height: 1px;
+  margin: 0.2rem 0rem;
+}
+
+.password-strength {
+  height: 4px;
+  border-radius: 0.2em;
+  transition: all 0.3s ease;
+}
+
+.password-strength.weak {
+  background-color: red;
+  width: 15%;
+}
+.password-strength.med {
+  background-color: orange;
+  width: 25%;
+}
+
+.password-strength.semi {
+  background-color: gold;
+  width: 50%;
+}
+
+.password-strength.strong {
+  background-color: greenyellow;
+  width: 75%;
+}
+
+.password-strength.strongest {
+  background-color: green;
+  width: 100%;
+}
+
+.password-confirm.nomatch {
+  border: 2px rgba(150, 0, 0, 0.4) solid;
+}
+
+.password-confirm.match {
+  border: 2px rgba(0, 150, 0, 0.4) solid;
+}
+
+.disable {
+  background-color: grey;
+}
