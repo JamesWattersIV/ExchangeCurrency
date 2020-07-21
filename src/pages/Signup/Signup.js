@@ -15,6 +15,7 @@ import "./Signup.scss";
 
 //Firebase Import
 import firebaseApp from "../../utils/firebase";
+import { createUserInDB } from "../../utils/firebase";
 
 //Util Import
 import zxcvbn from "zxcvbn";
@@ -66,8 +67,8 @@ const Signup = () => {
     return <Redirect to="/history" />;
   }
 
-  const registerUser = () => {
-    console.log("Registering User");
+  const createUserInDataBase = () => {
+    createUserInDB(firebaseApp.auth().currentUser.uid, name);
   };
 
   const onSubmit = async (e) => {
@@ -75,9 +76,11 @@ const Signup = () => {
     try {
       setLoading(true);
       await firebaseApp.auth().createUserWithEmailAndPassword(email, password);
-      setAuthTokens(
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWYwMjFiMDdkOGIwMDI0ZTNjMzY1OTUxIn0sImlhdCI6MTU5NDAxNjk4OSwiZXhwIjoxNTk0Mzc2OTg5fQ.nuKTpGnimoSDvgTettcd23OwdrnnoLlk_m6OYdMAp3U"
-      );
+      const idToken = await firebaseApp
+        .auth()
+        .currentUser.getIdToken(/* forceRefresh */ true);
+      setAuthTokens(idToken);
+      createUserInDataBase();
       setLoggedIn(true);
     } catch (error) {
       console.log(error);
@@ -149,6 +152,7 @@ const Signup = () => {
             }}
             placeholder="Password"
             fontAwesome={"fas fa-key"}
+            minLength={6}
             required={true}
           />
           <div className={"password-strength" + " " + passStrength}></div>
@@ -162,6 +166,7 @@ const Signup = () => {
               }}
               placeholder="Confirm Password"
               fontAwesome={"fas fa-exclamation"}
+              minLength={6}
               required={true}
             />
           </div>

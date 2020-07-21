@@ -1,16 +1,6 @@
-import firebase from "firebase";
+import firebase, { firestore } from "firebase/app";
 import "firebase/auth";
-
-/*const firebaseApp = firebase.initializeApp({
-  apiKey: "AIzaSyCzUx73FGlui4znMGTXPvH3-vItiEhBVfM",
-  authDomain: "currencyexchange-de08f.firebaseapp.com",
-  databaseURL: "https://currencyexchange-de08f.firebaseio.com",
-  projectId: "currencyexchange-de08f",
-  storageBucket: "currencyexchange-de08f.appspot.com",
-  messagingSenderId: "861296601155",
-  appId: "1:861296601155:web:46e53e38d898d87a7c4cf6",
-  measurementId: "G-EGHCTSP8NK",
-});*/
+import "firebase/firestore";
 
 const firebaseApp = firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
@@ -22,5 +12,57 @@ const firebaseApp = firebase.initializeApp({
   appId: process.env.REACT_APP_ID,
   measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 });
+
+let newDatabaseEntry = {
+  username: "",
+  balance: {
+    ZAR: 5000,
+  },
+  trades: [
+    {
+      id: 1,
+      date: {
+        day: 31,
+        month: "June",
+        year: 2020,
+      },
+      sold: {
+        currency: "ZAR",
+        amount: 5000,
+      },
+      bought: {
+        currency: "USD",
+        amount: 294.25,
+      },
+    },
+    {
+      id: 2,
+      date: {
+        day: 20,
+        month: "June",
+        year: 2020,
+      },
+      sold: {
+        currency: "GBP",
+        amount: 2000,
+      },
+      bought: {
+        currency: "EUR",
+        amount: 2210.94,
+      },
+    },
+  ],
+};
+
+export const getTradeHistory = (uid) => {
+  console.log(firestore().collection("users").doc(uid).trades);
+  //return firestore().collection("users").doc(uid).trades
+};
+
+export const createUserInDB = (uid, username) => {
+  console.log("Print form Firebase");
+  newDatabaseEntry.username = username;
+  firestore().collection("users").doc(uid).set(newDatabaseEntry);
+};
 
 export default firebaseApp;

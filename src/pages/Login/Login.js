@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import { Redirect, NavLink } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 //Context Import
 import { useAuth } from "../../context/auth";
@@ -27,8 +27,6 @@ const Login = () => {
   const [isLoggedIn, setLoggedIn] = useState(
     authTokens === null ? false : true
   );
-  const userPassword = "123dsfsdf456";
-  const userEmail = "test";
 
   //Redirect to Trade History if user is already logged in
   if (isLoggedIn) {
@@ -44,13 +42,11 @@ const Login = () => {
     try {
       //axious post request or call to database to check user details
       setLoading(true);
-      const object = await firebaseApp
+      await firebaseApp.auth().signInWithEmailAndPassword(userName, password);
+      const idToken = await firebaseApp
         .auth()
-        .signInWithEmailAndPassword(userName, password);
-
-      setAuthTokens(
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWYwMjFiMDdkOGIwMDI0ZTNjMzY1OTUxIn0sImlhdCI6MTU5NDAxNjk4OSwiZXhwIjoxNTk0Mzc2OTg5fQ.nuKTpGnimoSDvgTettcd23OwdrnnoLlk_m6OYdMAp3U"
-      );
+        .currentUser.getIdToken(/* forceRefresh */ true);
+      setAuthTokens(idToken);
       setLoggedIn(true);
     } catch (error) {
       console.log(error);

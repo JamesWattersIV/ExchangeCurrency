@@ -8,6 +8,7 @@ const Input = ({
   onChange,
   placeholder,
   fontAwesome,
+  minLength,
   required,
 }) => {
   return (
@@ -19,6 +20,7 @@ const Input = ({
           value={value}
           placeholder={placeholder}
           onChange={onChange}
+          minLength={minLength}
           required={required}
         />
       </div>

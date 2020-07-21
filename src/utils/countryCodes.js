@@ -170,7 +170,6 @@ const currencyNames = {
 };
 
 function findCurrencyName(code) {
-  let currencyName = currencyNames[code];
   return currencyNames[code].name;
 }
 

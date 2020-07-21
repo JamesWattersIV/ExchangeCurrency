@@ -1,44 +1,15 @@
 import React, { useState, createContext } from "react";
-
+//Firebase Import
+import firebaseApp from "../utils/firebase";
+import { getTradeHistory } from "../utils/firebase";
 //Export the context - import to get access to info
 export const TradeHistoryContext = createContext();
 
-//Export movie provider - gives access to the information
+//Export history provider - gives access to the information
 export const TradeHistoryProvider = (props) => {
-  const [tradeHistory, setTradeHistory] = useState([
-    {
-      id: 1,
-      date: {
-        day: 31,
-        month: "June",
-        year: 2020,
-      },
-      sold: {
-        currency: "ZAR",
-        amount: 5000,
-      },
-      bought: {
-        currency: "USD",
-        amount: 294.25,
-      },
-    },
-    {
-      id: 2,
-      date: {
-        day: 20,
-        month: "June",
-        year: 2020,
-      },
-      sold: {
-        currency: "GBP",
-        amount: 2000,
-      },
-      bought: {
-        currency: "EUR",
-        amount: 2210.94,
-      },
-    },
-  ]);
+  const [tradeHistory, setTradeHistory] = useState(
+    getTradeHistory(firebaseApp.auth().currentUser.uid)
+  );
 
   return (
     <TradeHistoryContext.Provider value={[tradeHistory, setTradeHistory]}>
@@ -47,3 +18,36 @@ export const TradeHistoryProvider = (props) => {
     </TradeHistoryContext.Provider>
   );
 };
+
+/*trades :{
+  id: 1,
+  date: {
+    day: 31,
+    month: "June",
+    year: 2020,
+  },
+  sold: {
+    currency: "ZAR",
+    amount: 5000,
+  },
+  bought: {
+    currency: "USD",
+    amount: 294.25,
+  },
+},
+{
+  id: 2,
+  date: {
+    day: 20,
+    month: "June",
+    year: 2020,
+  },
+  sold: {
+    currency: "GBP",
+    amount: 2000,
+  },
+  bought: {
+    currency: "EUR",
+    amount: 2210.94,
+  },
+}*/
