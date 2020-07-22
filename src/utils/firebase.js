@@ -54,9 +54,10 @@ let newDatabaseEntry = {
   ],
 };
 
-export const getTradeHistory = (uid) => {
-  console.log(firestore().collection("users").doc(uid).trades);
-  //return firestore().collection("users").doc(uid).trades
+export const updateTradeHistory = (uid, newTrade) => {
+  firestore().collection("users").doc(uid).update({
+    trades: newTrade,
+  });
 };
 
 export const createUserInDB = (uid, username) => {

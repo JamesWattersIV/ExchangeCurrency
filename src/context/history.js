@@ -1,15 +1,11 @@
 import React, { useState, createContext } from "react";
-//Firebase Import
-import firebaseApp from "../utils/firebase";
-import { getTradeHistory } from "../utils/firebase";
+
 //Export the context - import to get access to info
 export const TradeHistoryContext = createContext();
 
 //Export history provider - gives access to the information
 export const TradeHistoryProvider = (props) => {
-  const [tradeHistory, setTradeHistory] = useState(
-    getTradeHistory(firebaseApp.auth().currentUser.uid)
-  );
+  const [tradeHistory, setTradeHistory] = useState([]);
 
   return (
     <TradeHistoryContext.Provider value={[tradeHistory, setTradeHistory]}>

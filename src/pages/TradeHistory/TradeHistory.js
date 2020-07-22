@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState, Fragment } from "react";
+import { Link, Redirect } from "react-router-dom";
 
 //Context Import
 import { TradeHistoryContext } from "../../context/history";
@@ -9,18 +9,58 @@ import TradeDate from "../../components/TradeHistoryRow/TradeDate/TradeDate";
 import TradeDetails from "../../components/TradeHistoryRow/TradeDetails/TradeDetails";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import Button from "../Login/Button/Button";
+import Loading from "../../components/Loading/Loading";
+
+//Firebase Import
+import firebaseApp from "../../utils/firebase";
 
 //SASS Import
 import "./TradeHistory.scss";
 
 const TradeHistory = () => {
   const [tradeHistory, setTradeHistory] = useContext(TradeHistoryContext);
+  const [loading, setLoading] = useState(true);
+  const [userName, setUsername] = useState("");
+
+  if (loading) {
+    firebaseApp.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        const UID = firebaseApp.auth().currentUser.uid;
+        getTradeData(UID);
+      } else {
+        // No user is signed in.
+        return <Redirect to="/" />;
+      }
+    });
+  }
+
+  //Run only when UID is changed
+  const getTradeData = (UID) => {
+    const docData = firebaseApp.firestore().collection("users").doc(UID);
+    docData
+      .get()
+      .then(function (doc) {
+        if (doc.exists) {
+          setTradeHistory(doc.data().trades);
+          setUsername(doc.data().username);
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+      })
+      .then(setLoading(false))
+      .catch(function (error) {
+        console.log("Error getting document:", error);
+      });
+  };
 
   return (
     <div className="history-page">
+      {loading ? <Loading /> : <Fragment />}
       <PageTitle
         headingOne="Welcome"
-        headingTwo="James"
+        headingTwo={userName}
         subHeading="Your Trade History"
       />
       <div className="grid-container">

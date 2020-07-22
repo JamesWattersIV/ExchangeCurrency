@@ -2,6 +2,10 @@ import React, { useState, useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import TradeModal from "../../components/TradeModal/TradeModal";
 
+//Firebase Import
+import firebaseApp from "../../utils/firebase";
+import { updateTradeHistory } from "../../utils/firebase";
+
 //Import Context
 import { TradeHistoryContext } from "../../context/history";
 
@@ -111,7 +115,12 @@ const NewTrade = () => {
       },
     };
     setRequest(false);
-    setTradeHistory((history) => [...history, newTrade]);
+    if (firebaseApp.auth().currentUser != null) {
+      const UID = firebaseApp.auth().currentUser.uid;
+      const updatedTrade = tradeHistory;
+      updatedTrade.push(newTrade);
+      updateTradeHistory(UID, updatedTrade);
+    }
     setRedirect(true);
   }
 

@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 //Context Import
 import { useAuth } from "../../context/auth";
 
+//Firebase Import
+import firebaseApp from "../../utils/firebase";
+
 //SASS Impot
 import "./NavBar.scss";
 
@@ -12,6 +15,7 @@ const NavBar = () => {
 
   function logOut() {
     setAuthTokens(null);
+    firebaseApp.auth().signOut();
   }
 
   return (
