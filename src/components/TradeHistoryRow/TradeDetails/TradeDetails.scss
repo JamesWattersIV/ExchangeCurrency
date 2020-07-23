@@ -1,5 +1,13 @@
 @import "../../../sass/main.scss";
 
-.currency {
-  font-weight: 600;
+.date-col {
+  display: flex;
+  align-items: center;
+  .currency {
+    font-weight: 600;
+  }
+
+  .flag {
+    height: 40px;
+  }
 }
