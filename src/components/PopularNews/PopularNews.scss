@@ -1,0 +1,48 @@
+@import "../../sass/main.scss";
+a {
+  text-decoration: none;
+  margin: 5px;
+}
+
+.news-article-pop {
+  width: 80%;
+  border: 1px solid $lightGrey;
+  display: flex;
+  flex-direction: row;
+  border-radius: 2px;
+
+  img {
+    width: 15%;
+    padding: 1px 5px 1px 1px;
+  }
+
+  .info-container {
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      font-size: 24px;
+    }
+
+    h2 {
+      font-size: 18px;
+      color: black;
+      font-weight: 600;
+      padding: 0px;
+    }
+
+    h3 {
+      padding: 0px;
+      margin: 0px;
+      color: black;
+      align-self: start;
+      color: $softGrey;
+    }
+
+    p {
+      padding: 0px;
+      font-size: 18px;
+      color: $darkGrey;
+    }
+  }
+}

@@ -31,6 +31,11 @@ const NavBar = () => {
             New Trade
           </Link>
         </li>
+        <li className="nav-link">
+          <Link className="nav-link" to="/news">
+            FX News
+          </Link>
+        </li>
         <li className="logout">
           <Link className="nav-link" to="/" onClick={logOut}>
             Logout

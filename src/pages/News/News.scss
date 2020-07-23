@@ -1,0 +1,21 @@
+@import "../../sass/main.scss";
+
+.news-page {
+  padding-top: 5rem;
+  padding-left: 10rem;
+  overflow-y: hidden;
+
+  .news-section {
+    padding-top: 25px;
+    font-size: 28px;
+    font-weight: 600;
+    color: $mainPink;
+  }
+
+  .divider {
+    width: 80%;
+    height: 2px;
+    background-color: $lightGrey;
+    margin-bottom: 10px;
+  }
+}
