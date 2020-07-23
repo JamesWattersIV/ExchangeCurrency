@@ -13,7 +13,7 @@ const News = () => {
   const BASE_URL =
     "https://newsapi.org/v2/everything?q=forex&apiKey=bfc255afbf99427c8d41a9fbb294afc5";
 
-  const [sortBy, setSortBy] = useState("popularity");
+  const [sortBy, setSortBy] = useState("publishedAt");
   const [language, setLanguage] = useState("en");
   const [loading, setLoading] = useState(false);
   const [articles, setArticles] = useState([]);

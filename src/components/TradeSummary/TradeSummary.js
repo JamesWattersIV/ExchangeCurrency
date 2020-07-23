@@ -11,6 +11,11 @@ const TradeSummary = ({ fromCurr, toCurr, fromAmount, toAmount, onClick }) => {
     return Math.floor(parseFloat(val) * 100) / 100;
   }
 
+  const BASE_URL = "https://www.countryflags.io/";
+  const temp = "https://www.countryflags.io/be/flat/64.png";
+  const fromFlag = BASE_URL + fromCurr.substring(0, 2) + "/flat/64.png";
+  const toFlag = BASE_URL + toCurr.substring(0, 2) + "/flat/64.png";
+
   return (
     <div className="trade-summary-container">
       <h3>Review Your Trade</h3>
@@ -18,8 +23,9 @@ const TradeSummary = ({ fromCurr, toCurr, fromAmount, toAmount, onClick }) => {
       <div className="summary-row">
         <div className="amount">{roundDecimal(fromAmount)}</div>
         <div className="curr">
-          {fromCurr} - {findCurrencyName(fromCurr)}
+          {fromCurr}- {findCurrencyName(fromCurr)}
         </div>
+        <img src={fromFlag} />
       </div>
       <hr />
       <h4>For:</h4>
@@ -28,6 +34,7 @@ const TradeSummary = ({ fromCurr, toCurr, fromAmount, toAmount, onClick }) => {
         <div className="curr">
           {toCurr} - {findCurrencyName(toCurr)}
         </div>
+        <img src={toFlag} />
       </div>
       <hr />
     </div>
