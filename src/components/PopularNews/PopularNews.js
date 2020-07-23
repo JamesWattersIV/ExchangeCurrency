@@ -14,7 +14,7 @@ const PopularNews = ({
   return (
     <a href={url} target="_blank" rel="noopener noreferrer">
       <div className="news-article-pop">
-        <img src={urlToImage} alt="article image" />
+        <img src={urlToImage} alt="" />
         <div className="info-container">
           <h1>{title}</h1>
           <h2>{author}</h2>

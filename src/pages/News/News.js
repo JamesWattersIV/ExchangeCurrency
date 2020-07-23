@@ -13,19 +13,18 @@ const News = () => {
   const BASE_URL =
     "https://newsapi.org/v2/everything?q=forex&apiKey=bfc255afbf99427c8d41a9fbb294afc5";
 
-  const [sortBy, setSortBy] = useState("publishedAt");
-  const [language, setLanguage] = useState("en");
+  const sortBy = "publishedAt";
+  const language = "en";
   const [loading, setLoading] = useState(false);
   const [articles, setArticles] = useState([]);
-  const [numPopArt, setNumPopArt] = useState(5);
 
   //Fetch News Articles when page is loaded
   useEffect(() => {
     setLoading(true);
-    fetch(BASE_URL)
+    fetch(BASE_URL + "&sortBy=" + sortBy + "&language=" + language)
       .then((res) => res.json())
       .then((data) => {
-        setArticles(data.articles.slice(0, numPopArt));
+        setArticles(data.articles.slice(0, 5));
         setLoading(false);
       });
   }, []);

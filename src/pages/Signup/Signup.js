@@ -155,7 +155,7 @@ const Signup = () => {
             minLength={6}
             required={true}
           />
-          <div className={"password-strength" + " " + passStrength}></div>
+          <div className={"password-strength " + passStrength}></div>
           <div className="signup-spacer"></div>
           <div className={"password-confirm " + passMatch}>
             <Input

@@ -12,7 +12,6 @@ const TradeSummary = ({ fromCurr, toCurr, fromAmount, toAmount, onClick }) => {
   }
 
   const BASE_URL = "https://www.countryflags.io/";
-  const temp = "https://www.countryflags.io/be/flat/64.png";
   const fromFlag = BASE_URL + fromCurr.substring(0, 2) + "/flat/64.png";
   const toFlag = BASE_URL + toCurr.substring(0, 2) + "/flat/64.png";
 
@@ -25,7 +24,7 @@ const TradeSummary = ({ fromCurr, toCurr, fromAmount, toAmount, onClick }) => {
         <div className="curr">
           {fromCurr}- {findCurrencyName(fromCurr)}
         </div>
-        <img src={fromFlag} />
+        <img src={fromFlag} alt="" />
       </div>
       <hr />
       <h4>For:</h4>
@@ -34,7 +33,7 @@ const TradeSummary = ({ fromCurr, toCurr, fromAmount, toAmount, onClick }) => {
         <div className="curr">
           {toCurr} - {findCurrencyName(toCurr)}
         </div>
-        <img src={toFlag} />
+        <img src={toFlag} alt="" />
       </div>
       <hr />
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
@@ -10,7 +10,7 @@ import Button from "../../pages/Login/Button/Button";
 import "./TradeModal.scss";
 
 const TradeModal = ({ request, setRequest, TradeSummary, onAccept }) => {
-  const [open, setOpen] = useState(request);
+  const open = request;
 
   return (
     <div>
