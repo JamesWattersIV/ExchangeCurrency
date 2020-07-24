@@ -10,9 +10,11 @@ import "./News.scss";
 
 const News = () => {
   //News API End point
+  const GNEWS_TOKEN = process.env.REACT_APP_GNEWS_TOKEN;
   const BASE_URL =
-    "https://gnews.io/api/v3/search?q=forex&token=430a5cd7eda10574a972151c5673d9c9&country=uk";
-
+    "https://gnews.io/api/v3/search?q=forex&token=" +
+    GNEWS_TOKEN +
+    "&country=uk";
   const sortBy = "publishedAt";
   const language = "en";
   const [loading, setLoading] = useState(false);
