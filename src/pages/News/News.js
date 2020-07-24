@@ -11,12 +11,13 @@ import "./News.scss";
 const News = () => {
   //News API End point
   const BASE_URL =
-    "https://newsapi.org/v2/everything?q=forex&apiKey=bfc255afbf99427c8d41a9fbb294afc5";
+    "https://gnews.io/api/v3/search?q=forex&token=430a5cd7eda10574a972151c5673d9c9&country=uk";
 
   const sortBy = "publishedAt";
   const language = "en";
   const [loading, setLoading] = useState(false);
   const [articles, setArticles] = useState([]);
+  const [uniqueArray, setUniqueArray] = useState([]);
 
   //Fetch News Articles when page is loaded
   useEffect(() => {
@@ -24,10 +25,15 @@ const News = () => {
     fetch(BASE_URL + "&sortBy=" + sortBy + "&language=" + language)
       .then((res) => res.json())
       .then((data) => {
-        setArticles(data.articles.slice(0, 5));
+        setArticles(data.articles.filter(onlyUnique));
         setLoading(false);
       });
   }, []);
+
+  //Remove duplicate articles
+  const onlyUnique = (value, index, self) => {
+    return self.indexOf(value) === index;
+  };
 
   return (
     <Fragment>
@@ -42,13 +48,13 @@ const News = () => {
         <div className="divider"></div>
         {articles.map((article) => (
           <PopularNews
-            key={article.title}
-            author={article.author}
+            key={article.title + article.source.name}
+            author={article.source.name}
             description={article.description}
             publishedAt={article.publishedAt}
             title={article.title}
             url={article.url}
-            urlToImage={article.urlToImage}
+            urlToImage={article.image}
           />
         ))}
       </div>
