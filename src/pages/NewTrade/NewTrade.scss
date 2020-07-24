@@ -1,8 +1,9 @@
 @import "../../sass/main.scss";
 
 .new-trade-container {
-  padding-top: 10rem;
-  padding-left: 25rem;
+  padding-top: 5%;
+  padding-left: 15%;
+  transition: all 0.4s ease;
 
   .trade-info {
     //background-color: lightblue;
@@ -32,4 +33,41 @@
   display: flex;
   flex: row;
   padding-bottom: 4rem;
+}
+
+@media screen and (max-width: 800px) {
+  .new-trade-container {
+    padding-top: 30px;
+    padding-left: 10px;
+    .trade-info {
+      //background-color: lightblue;
+      padding-top: 2rem;
+
+      h2 {
+        font-size: 28px;
+        font-weight: 400;
+        color: black;
+      }
+
+      .hr {
+        width: 99%;
+        height: 2px;
+      }
+
+      .btn {
+        width: 40%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .new-trade-container {
+    padding-bottom: 20px;
+    .trade-info {
+      .selection-holder {
+        flex-direction: column;
+      }
+    }
+  }
 }

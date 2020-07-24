@@ -101,8 +101,8 @@ const TradeHistory = () => {
           </div>
         ))}
       </div>
-      <Link to="/new-trade">
-        <Button type="button" className="btn" value="New Trade">
+      <Link to="/new-trade" className="new-trade-button">
+        <Button type="button" className="btn newtrade" value="New Trade">
           New Trade
         </Button>
       </Link>

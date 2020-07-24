@@ -1,8 +1,9 @@
 @import "../../sass/main.scss";
 
 .history-page {
-  padding-top: 10rem;
-  padding-left: 25rem;
+  padding-top: 5%;
+  padding-left: 15%;
+  transition: all 0.4s ease;
 
   .btn {
     margin-top: 4rem;
@@ -32,17 +33,91 @@
       .col-1 {
         grid-area: 1 / 1 / 2 / 2;
         border: 1px solid $lightGrey;
-        min-width: 10vw;
       }
       .col-2 {
         grid-area: 1 / 2 / 2 / 3;
         border: 1px solid $lightGrey;
-        min-width: 10vw;
       }
       .col-3 {
         grid-area: 1 / 3 / 2 / 4;
         border: 1px solid $lightGrey;
-        min-width: 10vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  .history-page {
+    padding-top: 50px;
+    padding-left: 50px;
+
+    .grid-container {
+      width: 90vw;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .history-page {
+    padding-top: 30px;
+    padding-left: 10px;
+
+    .grid-container {
+      padding-top: 2em;
+      width: 95vw;
+
+      .grid-row {
+        .col-heading {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .history-page {
+    padding-top: 30px;
+    padding-left: 10px;
+
+    .new-trade-button {
+      width: 500px;
+    }
+
+    .grid-container {
+      padding-top: 2em;
+      width: 100vw;
+      margin-left: -150px;
+
+      .grid-row {
+        .col-heading {
+          font-size: 16px;
+        }
+
+        .col-1 {
+          visibility: hidden;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .history-page {
+    .grid-container {
+      margin-left: -150px;
+
+      .grid-row {
+        width: 100%;
+        .col-1 {
+          width: 160px;
+        }
+        .col-2 {
+          width: 160px;
+        }
+        .col-3 {
+          width: 160px;
+        }
       }
     }
   }

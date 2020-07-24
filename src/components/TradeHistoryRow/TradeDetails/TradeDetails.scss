@@ -11,3 +11,10 @@
     height: 40px;
   }
 }
+@media screen and (max-width: 480px) {
+  .date-col {
+    .flag {
+      height: 20px;
+    }
+  }
+}
