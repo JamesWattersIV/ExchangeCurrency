@@ -17,7 +17,6 @@ const News = () => {
   const language = "en";
   const [loading, setLoading] = useState(false);
   const [articles, setArticles] = useState([]);
-  const [uniqueArray, setUniqueArray] = useState([]);
 
   //Fetch News Articles when page is loaded
   useEffect(() => {
@@ -48,7 +47,7 @@ const News = () => {
         <div className="divider"></div>
         {articles.map((article) => (
           <PopularNews
-            key={article.title + article.source.name}
+            key={article.title + article.source.name + Math.random(0, 10000000)}
             author={article.source.name}
             description={article.description}
             publishedAt={article.publishedAt}
