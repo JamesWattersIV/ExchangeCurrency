@@ -19,6 +19,12 @@
 # About
 Exchange FX is a currency exchange project that was created as a task to incorporate different development technologies into a Web Application. At this current stage, all currency trades are hypothetical with no user balances tracked. Future updates will focus on managing currency balances in a users account. Any user that signs up automatically has two trades loaded into their trade history as an example of the functionality of the application.
 
+### Test Login
+* uctdev@uct.ac.za
+* 123456
+
+Alternatively signup with an email and password. Two default trades are loaded into your account to demonstrate functionality.
+
 # API
 
 ### Exchange Rates
