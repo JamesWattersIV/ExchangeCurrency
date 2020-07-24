@@ -2,7 +2,7 @@
   <img src='public/img/ExchangeFX.PNG' alt='ExchangeFX Logo'>
 </p>
 <p align='center'>
-  <a href='https://nervous-swirles-b7c5c9.netlify.app'>View Application</a>
+  <a href='https://nervous-swirles-b7c5c9.netlify.app' target="_blank" rel="noopener noreferrer">View Application</a>
 </p>
 <p align='center'>
   <img src='https://api.netlify.com/api/v1/badges/20914633-eb60-42dc-bd26-68e7f4214289/deploy-status'>
