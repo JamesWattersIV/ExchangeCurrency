@@ -10,7 +10,7 @@
 <p align='center'>
   <a href='#About'>About</a>  • 
   <a href='#API'>APIs</a>  • 
-  <a href='#Features'>APIs</a>  • 
+  <a href='#Features'>Features</a>  • 
   <a href='#Technologies'>Technologies</a>  •
   <a href='#To-Do'>To-Do</a>  • 
   <a href='#Resources'>Resources</a>  • 
